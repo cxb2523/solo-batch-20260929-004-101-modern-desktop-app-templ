@@ -9,6 +9,10 @@
   "Modern Desktop App Examples": "Exemples d'Applications de Bureau Modernes",
   "Monday to Saturday": "Lundi à Samedi",
   "Restore Down": "Niveau inf.",
+  "Settings": "Paramètres",
+  "Compact layout": "Disposition compacte",
+  "Reduces spacing and padding throughout the app": "Réduit les espacements et les marges dans toute l'application",
+  "Settings are stored locally and synced across tabs": "Les paramètres sont stockés localement et synchronisés entre les onglets",
   "Update v{{ v }} available": "Mise à jour v{{ v }} disponible",
   "Will relaunch afterwards": "Relancera ensuite",
   "transExample": "Ce modèle se trouve sur <0>{{variable}}</0>"

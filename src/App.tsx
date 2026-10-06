@@ -20,6 +20,7 @@ import classes from './App.module.css';
 import { fmtError, useCookie, useLocalForage } from './common/utils';
 import LanguageHeaders from './components/LanguageHeaders';
 import { ScrollToTop } from './components/ScrollToTop';
+import Settings from './pages/Settings';
 import { useTauriContext } from './tauri/TauriProvider';
 import { TitleBar } from './tauri/TitleBar';
 import ExampleView from './views/ExampleView';
@@ -45,7 +46,8 @@ export default function () {
 	const views: View[] = [
 		{ component: ExampleView, path: '/example-view', name: t('ExampleView') },
 		{ component: () => <Text>Woo, routing works</Text>, path: '/example-view-2', name: 'Test Routing' },
-		{ component: LazyView, path: '/lazy-view', name: 'Lazy Load' }
+		{ component: LazyView, path: '/lazy-view', name: 'Lazy Load' },
+		{ component: Settings, path: '/settings', name: t('Settings') }
 		// Other ways to add views to this array:
 		//     { component: () => <Home prop1={'stuff'} />, path: '/home', name: t('Home') },
 		//     { component: React.memo(About), path: '/about', name: t('About') },

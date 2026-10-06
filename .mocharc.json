@@ -1,0 +1,6 @@
+{
+	"spec": "test/*.spec.tsx",
+	"file": "test/jsdom-setup.ts",
+	"node-option": ["import=tsx"],
+	"timeout": 10000
+}
