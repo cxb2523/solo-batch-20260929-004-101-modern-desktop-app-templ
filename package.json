@@ -59,7 +59,8 @@
     "preinstall": "pnpm add -g add sloc @tauri-apps/cli",
     "sloc": "sloc src src-tauri/src",
     "upgrade": "concurrently \"pnpm up\" \"cd src-tauri && cargo update && cargo clean\"",
-    "test": "mocha"
+    "test": "tsx node_modules/mocha/bin/mocha.js test/settings.spec.tsx",
+    "test:e2e": "mocha"
   },
   "eslintConfig": {
     "extends": [
@@ -69,11 +70,13 @@
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.11.4",
+    "@testing-library/react": "^16.3.3",
     "@types/js-cookie": "^3.0.6",
     "@vitejs/plugin-react": "^6.0.5",
     "chai": "^6.2.2",
     "concurrently": "^10.0.4",
     "dotenv-load": "^3.0.0",
+    "jsdom": "^30.1.2",
     "mocha": "^11.8.0",
     "postcss": "^8.5.26",
     "postcss-preset-mantine": "^1.18.0",
@@ -82,6 +85,7 @@
     "selenium-webdriver": "^4.46.0",
     "terser": "^5.49.2",
     "toml": "^5.0.0",
+    "tsx": "^4.23.15",
     "vite": "^8.2.1",
     "vite-plugin-remove-console": "^2.2.0",
     "vite-plugin-top-level-await": "^1.6.0"

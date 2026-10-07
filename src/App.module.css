@@ -60,3 +60,8 @@
 }
 
 /* add custom App CSS here */
+
+/* compact layout preference, attribute set by src/store/preferences.ts */
+:global(:root[data-compact-layout='true']) .navLink {
+    padding: calc(var(--mantine-spacing-xs) / 2) var(--mantine-spacing-xs);
+}

@@ -20,6 +20,8 @@ import classes from './App.module.css';
 import { fmtError, useCookie, useLocalForage } from './common/utils';
 import LanguageHeaders from './components/LanguageHeaders';
 import { ScrollToTop } from './components/ScrollToTop';
+import Settings from './pages/Settings';
+import { usePreferences } from './store/preferences';
 import { useTauriContext } from './tauri/TauriProvider';
 import { TitleBar } from './tauri/TitleBar';
 import ExampleView from './views/ExampleView';
@@ -45,7 +47,8 @@ export default function () {
 	const views: View[] = [
 		{ component: ExampleView, path: '/example-view', name: t('ExampleView') },
 		{ component: () => <Text>Woo, routing works</Text>, path: '/example-view-2', name: 'Test Routing' },
-		{ component: LazyView, path: '/lazy-view', name: 'Lazy Load' }
+		{ component: LazyView, path: '/lazy-view', name: 'Lazy Load' },
+		{ component: Settings, path: '/settings', name: t('Settings') }
 		// Other ways to add views to this array:
 		//     { component: () => <Home prop1={'stuff'} />, path: '/home', name: t('Home') },
 		//     { component: React.memo(About), path: '/about', name: t('About') },
@@ -65,6 +68,8 @@ export default function () {
 	const [scroller, setScroller] = useState<HTMLElement | null>(null);
 	// load preferences using localForage
 	const [footersSeen, setFootersSeen, footersSeenLoading] = useLocalForage('footersSeen', {});
+	// compact layout preference (persisted in src/store/preferences.ts) drives the shell padding
+	const { compactLayout } = usePreferences();
 
 	const [navbarClearance, setNavbarClearance] = useState(0);
 	const footerRef = useRef<HTMLElement | null>(null);
@@ -177,7 +182,7 @@ export default function () {
 
 	return <>
 		{usingCustomTitleBar && <TitleBar />}
-		<AppShell padding='md'
+		<AppShell padding={compactLayout ? 'xs' : 'md'}
 			header={{ height: 60 }}
 			footer={showFooter ? { height: 60 } : undefined}
 			navbar={{ width: 200, breakpoint: 'sm', collapsed: { mobile: !mobileNavOpened, desktop: !desktopNavOpened } }}
